@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ERPNext DATEV Integration VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2024-04-30 17:37+0053\n"
+"POT-Creation-Date: 2024-12-19 16:50+0053\n"
 "PO-Revision-Date: 2024-04-30 17:37+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
@@ -16,233 +16,212 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.13.1\n"
 
-#: erpnext_datev/report/datev/datev.py:173
+#: erpnext_datev/erpnext_datev/report/datev/datev.py:173
 msgid "<b>Company</b> is a mandatory filter."
 msgstr "<b>Unternehmen</b> ist ein Pflichtfilter."
 
-#: erpnext_datev/report/datev/datev.py:177
+#: erpnext_datev/erpnext_datev/report/datev/datev.py:177
 msgid "<b>From Date</b> is a mandatory filter."
 msgstr "<b>Von Datum</b> ist ein Pflichtfilter."
 
-#: erpnext_datev/report/datev/datev.py:181
+#: erpnext_datev/erpnext_datev/report/datev/datev.py:181
 msgid "<b>To Date</b> is a mandatory filter."
 msgstr "<b>Bis Datum</b> ist ein Pflichtfilter."
 
 #. Label of a Int field in DocType 'DATEV Settings'
-#: erpnext_datev/doctype/datev_settings/datev_settings.json
-msgctxt "DATEV Settings"
+#: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
 msgid "Account Number Length"
-msgstr "Kontonummer Länge"
+msgstr ""
 
 #. Name of a role
-#: erpnext_datev/doctype/datev_settings/datev_settings.json
+#: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
 msgid "Accounts Manager"
-msgstr "Buchhaltungsleiter"
+msgstr ""
 
 #. Name of a role
-#: erpnext_datev/doctype/datev_settings/datev_settings.json
+#: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
 msgid "Accounts User"
-msgstr "Buachhaltungsbenutzer"
+msgstr ""
 
 #. Label of a Check field in DocType 'DATEV Voucher Config'
-#: erpnext_datev/doctype/datev_voucher_config/datev_voucher_config.json
-msgctxt "DATEV Voucher Config"
+#: erpnext_datev/erpnext_datev/doctype/datev_voucher_config/datev_voucher_config.json
 msgid "Attach Files"
-msgstr "Dateien anhängen"
+msgstr "Anhänge anfügen"
 
 #. Label of a Check field in DocType 'DATEV Voucher Config'
-#: erpnext_datev/doctype/datev_voucher_config/datev_voucher_config.json
-msgctxt "DATEV Voucher Config"
+#: erpnext_datev/erpnext_datev/doctype/datev_voucher_config/datev_voucher_config.json
 msgid "Attach Print"
-msgstr "Ausdruck anhängen"
+msgstr "Druck anfügen"
 
-#: erpnext_datev/report/datev/datev.js:55
+#: erpnext_datev/erpnext_datev/report/datev/datev.js:55
 msgid "Change DATEV Settings"
 msgstr "DATEV-Einstellungen ändern"
 
 #. Label of a Link field in DocType 'DATEV Settings'
-#: erpnext_datev/doctype/datev_settings/datev_settings.json
-msgctxt "DATEV Settings"
+#: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
 msgid "Client"
 msgstr "Mandant"
 
 #. Label of a Data field in DocType 'DATEV Settings'
-#: erpnext_datev/doctype/datev_settings/datev_settings.json
-msgctxt "DATEV Settings"
+#: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
 msgid "Client ID"
-msgstr "Mandantennr."
+msgstr "Mandantennummer"
 
-#: erpnext_datev/report/datev/datev.js:5
+#: erpnext_datev/erpnext_datev/report/datev/datev.js:5
 msgid "Company"
 msgstr "Unternehmen"
 
 #. Label of a Link field in DocType 'DATEV Settings'
-#: erpnext_datev/doctype/datev_settings/datev_settings.json
-msgctxt "DATEV Settings"
+#: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
 msgid "Consultant"
 msgstr "Berater"
 
 #. Label of a Data field in DocType 'DATEV Settings'
-#: erpnext_datev/doctype/datev_settings/datev_settings.json
-msgctxt "DATEV Settings"
+#: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
 msgid "Consultant ID"
-msgstr "Beraternr."
+msgstr "Beraternummer"
 
 #. Name of a report
-#: erpnext_datev/report/datev/datev.json
+#: erpnext_datev/erpnext_datev/report/datev/datev.json
 msgid "DATEV"
 msgstr "DATEV"
 
 #. Name of a DocType
-#: erpnext_datev/doctype/datev_settings/datev_settings.json
+#: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
 msgid "DATEV Settings"
 msgstr "DATEV-Einstellungen"
 
-#: erpnext_datev/report/datev/datev.js:40
+#: erpnext_datev/erpnext_datev/report/datev/datev.js:40
 msgid "DATEV Settings for your Company are missing. Would you like to create them now?"
 msgstr "DATEV-Einstellungen für Ihr Unternehmen fehlen. Möchten Sie diese jetzt erstellen?"
 
-#: erpnext_datev/report/datev/datev.py:187
+#: erpnext_datev/erpnext_datev/report/datev/datev.py:187
 msgid "DATEV Settings missing"
 msgstr "DATEV-Einstellungen fehlen"
 
 #. Name of a DocType
-#: erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.json
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.json
 msgid "DATEV Unternehmen Online Settings"
 msgstr "DATEV Unternehmen Online-Einstellungen"
 
-#. Name of a DocType
-#: erpnext_datev/doctype/datev_voucher_config/datev_voucher_config.json
-msgid "DATEV Voucher Config"
-msgstr "DATEV Belegkonfiguration"
-
 #. Label of a Table field in DocType 'DATEV Unternehmen Online Settings'
-#: erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.json
-msgctxt "DATEV Unternehmen Online Settings"
+#. Name of a DocType
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.json
+#: erpnext_datev/erpnext_datev/doctype/datev_voucher_config/datev_voucher_config.json
 msgid "DATEV Voucher Config"
 msgstr "DATEV Belegkonfiguration"
 
-#: erpnext_datev/report/datev/datev.py:197
+#: erpnext_datev/erpnext_datev/report/datev/datev.py:197
 msgid "Dates {} and {} are not in the same fiscal year."
 msgstr "Die Daten {} und {} liegen nicht im gleichen Geschäftsjahr."
 
-#: erpnext_datev/report/datev/datev.js:48
+#: erpnext_datev/erpnext_datev/report/datev/datev.js:48
 msgid "Download DATEV File"
 msgstr "DATEV-Datei herunterladen"
 
-#: config/desktop.py:11
+#: erpnext_datev/config/desktop.py:11
 msgid "ERPNext DATEV"
-msgstr ""
+msgstr "ERPNext-DATEV"
 
 #. Label of a Check field in DocType 'DATEV Unternehmen Online Settings'
-#: erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.json
-msgctxt "DATEV Unternehmen Online Settings"
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.json
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: erpnext_datev/report/datev/datev.js:15
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:77
+msgid "Failed to attach XML to Sales Invoice PDF for DATEV"
+msgstr "Fehler beim Anfügen der XML-Datei zu einem PDF-Druck für DATEV"
+
+#: erpnext_datev/erpnext_datev/report/datev/datev.js:15
 msgid "From Date"
 msgstr "Von Datum"
 
-#: erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:56
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:56
 msgid "New {0} {1} sent by the ERPNext-DATEV integration."
 msgstr "Neue {0} {1}, gesendet von der ERPNext-DATEV-Integration."
 
 #. Label of a Data field in DocType 'DATEV Settings'
-#: erpnext_datev/doctype/datev_settings/datev_settings.json
-msgctxt "DATEV Settings"
+#: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
 msgid "Opening Against Account Number"
 msgstr "Gegenkontonummer für Eröffnungsbuchungen"
 
-#: erpnext_datev/doctype/datev_settings/datev_settings.py:25
+#: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.py:25
 msgid "Opening Against Account Number must be {0} digits long"
 msgstr "Gegenkontonummer für Eröffnungsbuchungen muss {0} Ziffern lang sein"
 
-#: erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:16
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:16
 msgid "Please configure attachments for voucher type {}."
 msgstr "Bitte konfigurieren Sie Anhänge für Belegart {}."
 
-#: erpnext_datev/report/datev/datev.py:186
+#: erpnext_datev/erpnext_datev/report/datev/datev.py:186
 msgid "Please create DATEV Settings for Company {}"
 msgstr "Bitte erstellen Sie DATEV-Einstellungen für Unternehmen {}"
 
 #. Label of a Link field in DocType 'DATEV Voucher Config'
-#: erpnext_datev/doctype/datev_voucher_config/datev_voucher_config.json
-msgctxt "DATEV Voucher Config"
+#: erpnext_datev/erpnext_datev/doctype/datev_voucher_config/datev_voucher_config.json
 msgid "Print Format"
-msgstr "Druckformat"
+msgstr ""
 
 #. Label of a Data field in DocType 'DATEV Voucher Config'
-#: erpnext_datev/doctype/datev_voucher_config/datev_voucher_config.json
-msgctxt "DATEV Voucher Config"
+#: erpnext_datev/erpnext_datev/doctype/datev_voucher_config/datev_voucher_config.json
 msgid "Recipient"
 msgstr "Empfänger"
 
 #. Description of the 'Attach Files' (Check) field in DocType 'DATEV Voucher
 #. Config'
-#: erpnext_datev/doctype/datev_voucher_config/datev_voucher_config.json
-msgctxt "DATEV Voucher Config"
+#: erpnext_datev/erpnext_datev/doctype/datev_voucher_config/datev_voucher_config.json
 msgid "Send files attached to the voucher"
-msgstr "An Beleg angehängte Dateien mitsenden"
+msgstr "Dateien anhängen, die zu dem Beleg gehören"
 
 #. Description of the 'Attach Print' (Check) field in DocType 'DATEV Voucher
 #. Config'
-#: erpnext_datev/doctype/datev_voucher_config/datev_voucher_config.json
-msgctxt "DATEV Voucher Config"
+#: erpnext_datev/erpnext_datev/doctype/datev_voucher_config/datev_voucher_config.json
 msgid "Send the voucher printed as PDF"
-msgstr "Belegausdruck als PDF mitsenden"
+msgstr "Beleg als PDF senden"
 
 #. Label of a Link field in DocType 'DATEV Unternehmen Online Settings'
-#: erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.json
-msgctxt "DATEV Unternehmen Online Settings"
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.json
 msgid "Sender"
 msgstr "Absender"
 
 #. Name of a role
-#: erpnext_datev/doctype/datev_settings/datev_settings.json
-#: erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.json
+#: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.json
 msgid "System Manager"
 msgstr ""
 
 #. Label of a Data field in DocType 'DATEV Settings'
-#: erpnext_datev/doctype/datev_settings/datev_settings.json
-msgctxt "DATEV Settings"
+#: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
 msgid "Temporary Against Account Number"
-msgstr "Temporäre Gegenkontonummer"
+msgstr ""
 
-#: erpnext_datev/doctype/datev_settings/datev_settings.py:15
+#: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.py:15
 msgid "Temporary Against Account Number must be {0} digits long"
 msgstr "Temporäre Gegenkontonummer muss {0} Ziffern lang sein"
 
-#: erpnext_datev/report/datev/datev.js:22
+#: erpnext_datev/erpnext_datev/report/datev/datev.js:22
 msgid "To Date"
 msgstr "Bis Datum"
 
-#: erpnext_datev/report/datev/datev.js:29
-msgid "Voucher Type"
-msgstr "Belegart"
-
 #. Label of a Link field in DocType 'DATEV Voucher Config'
-#: erpnext_datev/doctype/datev_voucher_config/datev_voucher_config.json
-msgctxt "DATEV Voucher Config"
+#: erpnext_datev/erpnext_datev/doctype/datev_voucher_config/datev_voucher_config.json
+#: erpnext_datev/erpnext_datev/report/datev/datev.js:29
 msgid "Voucher Type"
 msgstr "Belegart"
 
 #. Description of the 'Temporary Against Account Number' (Data) field in
 #. DocType 'DATEV Settings'
-#: erpnext_datev/doctype/datev_settings/datev_settings.json
-msgctxt "DATEV Settings"
+#: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
 msgid "Will be used as against account for all normal ledger entries"
-msgstr "Wird als Gegenkonto für alle normalen Buchungen verwendet"
+msgstr "Wird als Gegenkontonummer für alle normalen Buchungen verwendet"
 
 #. Description of the 'Opening Against Account Number' (Data) field in DocType
 #. 'DATEV Settings'
-#: erpnext_datev/doctype/datev_settings/datev_settings.json
-msgctxt "DATEV Settings"
+#: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
 msgid "Will be used as against account for opening ledger entries"
-msgstr "Wird als Gegenkonto für alle Eröffnungsbuchungen verwendet"
+msgstr "Wird als Gegenkontonummer für Eröffnungsbuchungen verwendet"
 
-#: erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:48
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:48
 msgid "{} was not sent to DATEV because no attachments have been found."
 msgstr "{} wurde nicht an DATEV gesendet weil keine Anhänge gefunden wurden."
 
