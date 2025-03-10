@@ -1,14 +1,14 @@
 # Translations template for ERPNext DATEV Integration.
-# Copyright (C) 2024 ALYF GmbH
+# Copyright (C) 2025 ALYF GmbH
 # This file is distributed under the same license as the ERPNext DATEV Integration project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ERPNext DATEV Integration VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2024-12-19 16:50+0053\n"
-"PO-Revision-Date: 2024-12-19 16:50+0053\n"
+"POT-Creation-Date: 2025-03-10 12:21+0053\n"
+"PO-Revision-Date: 2025-03-10 12:21+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,12 @@ msgstr ""
 
 #: erpnext_datev/erpnext_datev/report/datev/datev.py:181
 msgid "<b>To Date</b> is a mandatory filter."
+msgstr ""
+
+#. Description of the 'Default Print Language' (Link) field in DocType 'DATEV
+#. Unternehmen Online Settings'
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.json
+msgid "A document is printed according to its <code>language</code> field. If it doesn't have a <code>language</code> field or it is empty, the <i>Default Print Language</i> is used. If <i>Default Print Language</i> is empty, the language according to <b>System Settings</b> is used."
 msgstr ""
 
 #. Label of a Int field in DocType 'DATEV Settings'
@@ -115,6 +121,11 @@ msgstr ""
 msgid "Dates {} and {} are not in the same fiscal year."
 msgstr ""
 
+#. Label of a Link field in DocType 'DATEV Unternehmen Online Settings'
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.json
+msgid "Default Print Language"
+msgstr ""
+
 #: erpnext_datev/erpnext_datev/report/datev/datev.js:48
 msgid "Download DATEV File"
 msgstr ""
@@ -128,7 +139,7 @@ msgstr ""
 msgid "Enabled"
 msgstr ""
 
-#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:77
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:79
 msgid "Failed to attach XML to Sales Invoice PDF for DATEV"
 msgstr ""
 
@@ -136,7 +147,7 @@ msgstr ""
 msgid "From Date"
 msgstr ""
 
-#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:56
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:58
 msgid "New {0} {1} sent by the ERPNext-DATEV integration."
 msgstr ""
 
@@ -221,7 +232,7 @@ msgstr ""
 msgid "Will be used as against account for opening ledger entries"
 msgstr ""
 
-#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:48
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:50
 msgid "{} was not sent to DATEV because no attachments have been found."
 msgstr ""
 
