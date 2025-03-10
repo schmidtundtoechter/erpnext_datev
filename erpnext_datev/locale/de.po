@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ERPNext DATEV Integration VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2024-12-19 16:50+0053\n"
+"POT-Creation-Date: 2025-03-10 12:21+0053\n"
 "PO-Revision-Date: 2024-04-30 17:37+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
@@ -28,10 +28,16 @@ msgstr "<b>Von Datum</b> ist ein Pflichtfilter."
 msgid "<b>To Date</b> is a mandatory filter."
 msgstr "<b>Bis Datum</b> ist ein Pflichtfilter."
 
+#. Description of the 'Default Print Language' (Link) field in DocType 'DATEV
+#. Unternehmen Online Settings'
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.json
+msgid "A document is printed according to its <code>language</code> field. If it doesn't have a <code>language</code> field or it is empty, the <i>Default Print Language</i> is used. If <i>Default Print Language</i> is empty, the language according to <b>System Settings</b> is used."
+msgstr "Ein Dokument wird entsprechend seinem Feld <i>Sprache</i> (<code>language</code>) gedruckt. Wenn das Feld <i>Sprache</i> nicht vorhanden oder leer ist, wird die <i>Standarddrucksprache</i> verwendet. Wenn das Feld <i>Standarddrucksprache</i> leer ist, wird die Sprache gemäß den <b>Systemeinstellungen</b> verwendet."
+
 #. Label of a Int field in DocType 'DATEV Settings'
 #: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
 msgid "Account Number Length"
-msgstr ""
+msgstr "Kontonummerlänge"
 
 #. Name of a role
 #: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
@@ -115,6 +121,11 @@ msgstr "DATEV Belegkonfiguration"
 msgid "Dates {} and {} are not in the same fiscal year."
 msgstr "Die Daten {} und {} liegen nicht im gleichen Geschäftsjahr."
 
+#. Label of a Link field in DocType 'DATEV Unternehmen Online Settings'
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.json
+msgid "Default Print Language"
+msgstr "Standarddrucksprache"
+
 #: erpnext_datev/erpnext_datev/report/datev/datev.js:48
 msgid "Download DATEV File"
 msgstr "DATEV-Datei herunterladen"
@@ -128,7 +139,7 @@ msgstr "ERPNext-DATEV"
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:77
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:79
 msgid "Failed to attach XML to Sales Invoice PDF for DATEV"
 msgstr "Fehler beim Anfügen der XML-Datei zu einem PDF-Druck für DATEV"
 
@@ -136,7 +147,7 @@ msgstr "Fehler beim Anfügen der XML-Datei zu einem PDF-Druck für DATEV"
 msgid "From Date"
 msgstr "Von Datum"
 
-#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:56
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:58
 msgid "New {0} {1} sent by the ERPNext-DATEV integration."
 msgstr "Neue {0} {1}, gesendet von der ERPNext-DATEV-Integration."
 
@@ -193,7 +204,7 @@ msgstr ""
 #. Label of a Data field in DocType 'DATEV Settings'
 #: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
 msgid "Temporary Against Account Number"
-msgstr ""
+msgstr "Temporäre Gegenkontonummer"
 
 #: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.py:15
 msgid "Temporary Against Account Number must be {0} digits long"
@@ -221,7 +232,7 @@ msgstr "Wird als Gegenkontonummer für alle normalen Buchungen verwendet"
 msgid "Will be used as against account for opening ledger entries"
 msgstr "Wird als Gegenkontonummer für Eröffnungsbuchungen verwendet"
 
-#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:48
+#: erpnext_datev/erpnext_datev/doctype/datev_unternehmen_online_settings/datev_unternehmen_online_settings.py:50
 msgid "{} was not sent to DATEV because no attachments have been found."
 msgstr "{} wurde nicht an DATEV gesendet weil keine Anhänge gefunden wurden."
 
