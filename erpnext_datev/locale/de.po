@@ -37,7 +37,7 @@ msgstr "Ein Dokument wird entsprechend seinem Feld <i>Sprache</i> (<code>languag
 #. Label of a Int field in DocType 'DATEV Settings'
 #: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
 msgid "Account Number Length"
-msgstr ""
+msgstr "Kontonummerlänge"
 
 #. Name of a role
 #: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
@@ -204,7 +204,7 @@ msgstr ""
 #. Label of a Data field in DocType 'DATEV Settings'
 #: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.json
 msgid "Temporary Against Account Number"
-msgstr ""
+msgstr "Temporäre Gegenkontonummer"
 
 #: erpnext_datev/erpnext_datev/doctype/datev_settings/datev_settings.py:15
 msgid "Temporary Against Account Number must be {0} digits long"
