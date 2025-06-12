@@ -21,11 +21,16 @@ Integration between [ERPNext](https://github.com/frappe/erpnext) and DATEV.
 
 1. Datev Settings
 
-    Configure you client number, you tax consultant's number and a temporary against account.
+    Configure you client number, you tax consultant's number and a temporary against account. We recommend keeping the default against account "9090" as described in the [DATEV Help Center](https://apps.datev.de/help-center/documents/1002764).
 
 2. DATEV Report
 
     Now you can use the report "DATEV". This is a preview of the transactions data. It can be exported, along with the master data, as zip file via the report's menu. Your tax xonsultant can then import your GL Entries into his DATEV system.
+
+> [!IMPORTANT]
+> ERPNext does not have automatic VAT deduction ("Automatikkonten") on the GL Entry level. By using the default against account "9090", the automation is disabled.
+> 
+> If you use a different against account, please ensure to only book to non-automatic accounts in ERPNext. Otherwise, the VAT deduction will be incorrect.
 
 ## Setup DATEV Unternehmen Online [en]
 

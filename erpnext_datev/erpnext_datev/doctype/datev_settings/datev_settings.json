@@ -71,7 +71,7 @@
   },
   {
    "allow_in_quick_entry": 1,
-   "default": "9999",
+   "default": "9090",
    "description": "Will be used as against account for all normal ledger entries",
    "fieldname": "temporary_against_account_number",
    "fieldtype": "Data",
@@ -86,8 +86,9 @@
    "label": "Opening Against Account Number"
   }
  ],
+ "grid_page_length": 50,
  "links": [],
- "modified": "2023-06-29 18:00:12.981676",
+ "modified": "2025-06-12 16:30:22.776994",
  "modified_by": "Administrator",
  "module": "Erpnext Datev",
  "name": "DATEV Settings",
@@ -130,6 +131,7 @@
   }
  ],
  "quick_entry": 1,
+ "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
