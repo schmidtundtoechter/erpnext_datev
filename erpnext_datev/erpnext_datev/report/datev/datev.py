@@ -343,7 +343,7 @@ def run_query(filters, extra_fields, extra_joins, extra_filters, as_dict=1):
 			CASE gl.is_opening when 'Yes' then %(opening_account)s else %(against_account)s end as 'Gegenkonto (ohne BU-Schlüssel)',
 
 			/* disable automatic VAT deduction */
-			'40' as 'BU-Schlüssel',
+			'' as 'BU-Schlüssel',
 
 			gl.posting_date as 'Belegdatum',
 			gl.voucher_no as 'Belegfeld 1',
