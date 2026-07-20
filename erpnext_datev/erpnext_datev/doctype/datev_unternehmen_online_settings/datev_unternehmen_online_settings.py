@@ -62,7 +62,15 @@ def do_send(doctype, docname):
 		attachments.append(filename)
 
 	if voucher_config.attach_files:
-		for file_name in get_attached_files(doc.doctype, doc.name):
+		file_names = get_attached_files(doc.doctype, doc.name)
+		if not file_names:
+			# pdf_a_3 may still be generating the PDF/A-3 asynchronously via its own
+			# background job.  Wait 60 s then retry once before giving up.
+			import time
+			time.sleep(60)
+			file_names = get_attached_files(doc.doctype, doc.name)
+
+		for file_name in file_names:
 			att = _read_file_content(file_name)
 			if att:
 				attachments.append(att)
