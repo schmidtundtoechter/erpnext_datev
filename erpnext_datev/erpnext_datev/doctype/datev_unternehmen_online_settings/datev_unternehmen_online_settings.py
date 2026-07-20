@@ -63,12 +63,22 @@ def do_send(doctype, docname):
 
 	if voucher_config.attach_files:
 		file_names = get_attached_files(doc.doctype, doc.name)
+		frappe.log_error(
+			title=f"DATEV DEBUG: immediate file check for {doc.doctype} {doc.name}: {file_names}",
+			reference_doctype=doc.doctype,
+			reference_name=doc.name,
+		)
 		if not file_names:
 			# pdf_a_3 may still be generating the PDF/A-3 asynchronously via its own
 			# background job.  Wait 60 s then retry once before giving up.
 			import time
 			time.sleep(60)
 			file_names = get_attached_files(doc.doctype, doc.name)
+			frappe.log_error(
+				title=f"DATEV DEBUG: retry file check after 60s for {doc.doctype} {doc.name}: {file_names}",
+				reference_doctype=doc.doctype,
+				reference_name=doc.name,
+			)
 
 		for file_name in file_names:
 			att = _read_file_content(file_name)
@@ -148,15 +158,12 @@ def get_voucher_config(settings: DATEVUnternehmenOnlineSettings, doctype: str):
 
 
 def get_attached_files(doctype: str, docname: str):
-	return frappe.get_all(
-		"File",
-		filters={
-			"attached_to_doctype": doctype,
-			"attached_to_name": docname,
-		},
-		pluck="name",
-		ignore_permissions=True,
+	# Raw SQL bypasses all Frappe permission and filtering layers.
+	rows = frappe.db.sql(
+		"SELECT name FROM `tabFile` WHERE attached_to_doctype=%s AND attached_to_name=%s",
+		(doctype, docname),
 	)
+	return [r[0] for r in rows]
 
 
 def _read_file_content(file_name: str) -> "dict | None":
