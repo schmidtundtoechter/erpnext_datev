@@ -24,6 +24,27 @@ def send(doc, method):
 	if not settings.enabled:
 		return
 
+	if not get_voucher_config(settings, doc.doctype):
+		return
+
+	# Enqueue after commit so that pdf_a_3 (and other on_submit hooks that create
+	# file attachments synchronously) have already committed their File records
+	# before we query for them.
+	frappe.enqueue(
+		"erpnext_datev.erpnext_datev.doctype.datev_unternehmen_online_settings"
+		".datev_unternehmen_online_settings.do_send",
+		doctype=doc.doctype,
+		docname=doc.name,
+		enqueue_after_commit=True,
+	)
+
+
+def do_send(doctype, docname):
+	doc = frappe.get_doc(doctype, docname)
+	settings = frappe.get_single("DATEV Unternehmen Online Settings")
+	if not settings.enabled:
+		return
+
 	voucher_config = get_voucher_config(settings, doc.doctype)
 	if not voucher_config:
 		return
@@ -45,10 +66,10 @@ def send(doc, method):
 		attachments.extend(get_attached_files(doc.doctype, doc.name))
 
 	if not attachments:
-		frappe.msgprint(
-			# fmt: off
-			_("{} was not sent to DATEV because no attachments have been found.").format(_(doc.doctype))
-			# fmt: on
+		frappe.log_error(
+			title=_("{} was not sent to DATEV because no attachments have been found.").format(_(doc.doctype)),
+			reference_doctype=doc.doctype,
+			reference_name=doc.name,
 		)
 		return
 
