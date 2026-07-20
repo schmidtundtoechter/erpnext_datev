@@ -26,9 +26,6 @@ def send(doc, method):
 	if not get_voucher_config(settings, doc.doctype):
 		return
 
-	# Enqueue after commit so that pdf_a_3 (and other on_submit hooks that create
-	# file attachments synchronously) have already committed their File records
-	# before we query for them.
 	frappe.enqueue(
 		"erpnext_datev.erpnext_datev.doctype.datev_unternehmen_online_settings"
 		".datev_unternehmen_online_settings.do_send",
@@ -63,33 +60,36 @@ def do_send(doctype, docname):
 
 	if voucher_config.attach_files:
 		file_names = get_attached_files(doc.doctype, doc.name)
-		frappe.log_error(
-			title=f"DATEV DEBUG: immediate file check for {doc.doctype} {doc.name}: {file_names}",
-			reference_doctype=doc.doctype,
-			reference_name=doc.name,
-		)
-		if not file_names:
-			# pdf_a_3 may still be generating the PDF/A-3 asynchronously via its own
-			# background job.  Wait 60 s then retry once before giving up.
-			import time
-			time.sleep(10)
-			file_names = get_attached_files(doc.doctype, doc.name)
-			frappe.log_error(
-				title=f"DATEV DEBUG: retry file check after 60s for {doc.doctype} {doc.name}: {file_names}",
-				reference_doctype=doc.doctype,
-				reference_name=doc.name,
-			)
 
-		for file_name in file_names:
-			att = _read_file_content(file_name)
+		if not file_names:
+			# pdf_a_3 may run as an async background job that races against this job.
+			# Retry every 10 s for up to 60 s waiting for it to commit its File record.
+			import time
+			for _attempt in range(6):
+				time.sleep(10)
+				file_names = get_attached_files(doc.doctype, doc.name)
+				if file_names:
+					break
+
+		if not file_names:
+			# Still nothing in DB: fall back to reading the pdf_a_3 file directly from
+			# disk.  pdf_a_3 writes the file to disk (in File.before_save) before the
+			# background-job transaction commits, so it may already be on disk even
+			# though the DB record is not yet visible.
+			att = _read_pdfa_from_disk(doc.name)
 			if att:
 				attachments.append(att)
-			else:
-				frappe.log_error(
-					title=_("DATEV: could not read file {} for {} {}").format(file_name, doctype, docname),
-					reference_doctype=doctype,
-					reference_name=docname,
-				)
+		else:
+			for file_name in file_names:
+				att = _read_file_content(file_name)
+				if att:
+					attachments.append(att)
+				else:
+					frappe.log_error(
+						title=_("DATEV: could not read file {} for {} {}").format(file_name, doctype, docname),
+						reference_doctype=doctype,
+						reference_name=docname,
+					)
 
 	if not attachments:
 		frappe.log_error(
@@ -99,7 +99,6 @@ def do_send(doctype, docname):
 		)
 		return
 
-	# Use _make (internal, no whitelist permission check) so this works in background workers.
 	from frappe.core.doctype.communication.email import _make
 	try:
 		_make(
@@ -188,6 +187,35 @@ def _read_file_content(file_name: str) -> "dict | None":
 	except OSError:
 		frappe.log_error(
 			title=f"DATEV: cannot read file {file_name} from {full_path}",
+			message=frappe.get_traceback(),
+		)
+		return None
+
+
+def _read_pdfa_from_disk(docname: str) -> "dict | None":
+	"""Read the PDF/A-3 file from disk using pdf_a_3's naming convention.
+
+	pdf_a_3 names its output '{docname}.pdf' and stores it as a private file at
+	'<site>/private/files/{docname}.pdf'.  Reading it here matches exactly what
+	pdf_a_3's forward_pdf_to_archive() does — avoiding any DB dependency.
+	"""
+	import os
+
+	file_name = f"{docname}.pdf".replace("/", "-")
+	file_path = frappe.get_site_path("private", "files", file_name)
+
+	if not os.path.isfile(file_path):
+		frappe.log_error(
+			title=f"DATEV: pdf_a_3 file not found on disk for {docname} ({file_path})",
+		)
+		return None
+
+	try:
+		with open(file_path, "rb") as f:
+			return {"fname": file_name, "fcontent": f.read()}
+	except OSError:
+		frappe.log_error(
+			title=f"DATEV: cannot read PDF from disk: {file_path}",
 			message=frappe.get_traceback(),
 		)
 		return None
