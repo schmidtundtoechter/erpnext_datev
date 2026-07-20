@@ -72,7 +72,7 @@ def do_send(doctype, docname):
 			# pdf_a_3 may still be generating the PDF/A-3 asynchronously via its own
 			# background job.  Wait 60 s then retry once before giving up.
 			import time
-			time.sleep(60)
+			time.sleep(10)
 			file_names = get_attached_files(doc.doctype, doc.name)
 			frappe.log_error(
 				title=f"DATEV DEBUG: retry file check after 60s for {doc.doctype} {doc.name}: {file_names}",
