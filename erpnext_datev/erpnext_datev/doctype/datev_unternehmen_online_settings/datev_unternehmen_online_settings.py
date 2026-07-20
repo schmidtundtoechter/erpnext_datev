@@ -128,4 +128,5 @@ def get_attached_files(doctype: str, docname: str):
 			"attached_to_name": docname,
 		},
 		pluck="name",
+		ignore_permissions=True,
 	)
