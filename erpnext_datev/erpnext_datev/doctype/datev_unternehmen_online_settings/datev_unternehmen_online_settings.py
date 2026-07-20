@@ -3,7 +3,6 @@
 
 import frappe
 from frappe import _
-from frappe.core.doctype.communication.email import make as make_communication
 from frappe.model.document import Document
 from frappe.translate import print_language
 
@@ -63,7 +62,16 @@ def do_send(doctype, docname):
 		attachments.append(filename)
 
 	if voucher_config.attach_files:
-		attachments.extend(get_attached_files(doc.doctype, doc.name))
+		for file_name in get_attached_files(doc.doctype, doc.name):
+			att = _read_file_content(file_name)
+			if att:
+				attachments.append(att)
+			else:
+				frappe.log_error(
+					title=_("DATEV: could not read file {} for {} {}").format(file_name, doctype, docname),
+					reference_doctype=doctype,
+					reference_name=docname,
+				)
 
 	if not attachments:
 		frappe.log_error(
@@ -73,18 +81,29 @@ def do_send(doctype, docname):
 		)
 		return
 
-	make_communication(
-		doctype=doc.doctype,
-		name=doc.name,
-		content=_("New {0} {1} sent by the ERPNext-DATEV integration.").format(_(doc.doctype), doc.name),
-		subject=f"{_(doc.doctype)}: {doc.name}",
-		sender=frappe.get_value("Email Account", settings.sender, "email_id"),
-		recipients=[voucher_config.recipient],
-		communication_medium="Email",
-		send_email=True,
-		attachments=attachments,
-		communication_type="Automated Message",
-	)
+	# Use _make (internal, no whitelist permission check) so this works in background workers.
+	from frappe.core.doctype.communication.email import _make
+	try:
+		_make(
+			doctype=doc.doctype,
+			name=doc.name,
+			content=_("New {0} {1} sent by the ERPNext-DATEV integration.").format(_(doc.doctype), doc.name),
+			subject=f"{_(doc.doctype)}: {doc.name}",
+			sender=frappe.get_value("Email Account", settings.sender, "email_id"),
+			recipients=[voucher_config.recipient],
+			communication_medium="Email",
+			send_email=True,
+			attachments=attachments,
+			communication_type="Automated Message",
+			add_signature=False,
+		)
+	except Exception:
+		frappe.log_error(
+			title=_("DATEV: failed to send email for {} {}").format(doctype, docname),
+			message=frappe.get_traceback(),
+			reference_doctype=doctype,
+			reference_name=docname,
+		)
 
 
 def attach_print(doctype, name, language, print_format):
@@ -130,3 +149,30 @@ def get_attached_files(doctype: str, docname: str):
 		pluck="name",
 		ignore_permissions=True,
 	)
+
+
+def _read_file_content(file_name: str) -> "dict | None":
+	"""Read a File document's bytes directly from disk, bypassing all permission checks."""
+	file_info = frappe.db.get_value(
+		"File", file_name, ["file_name", "file_url", "is_private"], as_dict=True
+	)
+	if not file_info or not file_info.file_url:
+		return None
+
+	url = file_info.file_url
+	if url.startswith("/private/"):
+		full_path = frappe.get_site_path() + url
+	elif url.startswith("/files/"):
+		full_path = frappe.get_site_path("public") + url
+	else:
+		return None
+
+	try:
+		with open(full_path, "rb") as f:
+			return {"fname": file_info.file_name, "fcontent": f.read()}
+	except OSError:
+		frappe.log_error(
+			title=f"DATEV: cannot read file {file_name} from {full_path}",
+			message=frappe.get_traceback(),
+		)
+		return None
