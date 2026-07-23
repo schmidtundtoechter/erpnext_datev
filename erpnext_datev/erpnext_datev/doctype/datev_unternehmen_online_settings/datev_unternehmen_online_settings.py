@@ -62,20 +62,9 @@ def do_send(doctype, docname):
 		file_names = get_attached_files(doc.doctype, doc.name)
 
 		if not file_names:
-			# pdf_a_3 may run as an async background job that races against this job.
-			# Retry every 10 s for up to 60 s waiting for it to commit its File record.
-			import time
-			for _attempt in range(6):
-				time.sleep(10)
-				file_names = get_attached_files(doc.doctype, doc.name)
-				if file_names:
-					break
-
-		if not file_names:
-			# Still nothing in DB: fall back to reading the pdf_a_3 file directly from
-			# disk.  pdf_a_3 writes the file to disk (in File.before_save) before the
-			# background-job transaction commits, so it may already be on disk even
-			# though the DB record is not yet visible.
+			# pdf_a_3 runs synchronously in on_submit so its File record is committed
+			# before this background job starts. Fall back directly to disk if the DB
+			# record is somehow missing.
 			att = _read_pdfa_from_disk(doc.name)
 			if att:
 				attachments.append(att)
